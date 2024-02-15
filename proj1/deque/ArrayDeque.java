@@ -69,7 +69,7 @@ public class ArrayDeque<T> {
     }
 
 
-    public T removeFirst() {
+    public T removeLast() {
         if (size < MIN_CAPACITY_PERCENTAGE * arr.length)
             shrink();
 
@@ -80,7 +80,7 @@ public class ArrayDeque<T> {
         return removedValue;
     }
 
-    public T removeFront() {
+    public T removeFirst() {
         if (size < MIN_CAPACITY_PERCENTAGE * arr.length)
             shrink();
 

@@ -13,9 +13,9 @@ public class ArrayDequeTest {
         deque.addLast(2);
         deque.addLast(3);
 
-        assertEquals(Integer.valueOf(3), deque.removeFirst());
-        assertEquals(Integer.valueOf(2), deque.removeFirst());
-        assertEquals(Integer.valueOf(1), deque.removeFirst());
+        assertEquals(Integer.valueOf(3), deque.removeLast());
+        assertEquals(Integer.valueOf(2), deque.removeLast());
+        assertEquals(Integer.valueOf(1), deque.removeLast());
         assertTrue(deque.isEmpty());
     }
 
@@ -26,9 +26,9 @@ public class ArrayDequeTest {
         deque.addFirst(2);
         deque.addFirst(3);
 
-        assertEquals(Integer.valueOf(3), deque.removeFront());
-        assertEquals(Integer.valueOf(2), deque.removeFront());
-        assertEquals(Integer.valueOf(1), deque.removeFront());
+        assertEquals(Integer.valueOf(3), deque.removeFirst());
+        assertEquals(Integer.valueOf(2), deque.removeFirst());
+        assertEquals(Integer.valueOf(1), deque.removeFirst());
         assertTrue(deque.isEmpty());
     }
 
@@ -74,9 +74,9 @@ public class ArrayDequeTest {
             deque.addLast(i);
 
         for (int i = 6; i <= 10; ++i)
-            deque.removeFirst();
+            deque.removeLast();
         for (int i = 3; i >= 1; --i)
-            deque.removeFront();
+            deque.removeFirst();
 
         assertEquals(2, deque.size());
         assertEquals("4, 5", deque.toString());
