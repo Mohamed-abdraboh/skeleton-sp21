@@ -1,7 +1,5 @@
 package deque;
 
-import java.util.Arrays;
-
 public class ArrayDeque<T> {
     private T[] arr;
     private static final int FACTOR = 2;
@@ -53,7 +51,7 @@ public class ArrayDeque<T> {
     }
 
 
-    public void addFront(T value) {
+    public void addFirst(T value) {
         if (size == arr.length)
             expand();
         startIndex = (startIndex - 1 + arr.length) % arr.length;
@@ -71,7 +69,7 @@ public class ArrayDeque<T> {
     }
 
 
-    public T removeLast() {
+    public T removeFirst() {
         if (size < MIN_CAPACITY_PERCENTAGE * arr.length)
             shrink();
 
