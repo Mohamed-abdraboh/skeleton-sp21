@@ -1,6 +1,6 @@
 package deque;
 
-public class ArrayDeque<T> {
+public class ArrayDeque<T> implements Deque<T> {
     private T[] arr;
     private static final int FACTOR = 2;
     private static final double MIN_CAPACITY_PERCENTAGE = 0.25;
@@ -24,9 +24,6 @@ public class ArrayDeque<T> {
         return size;
     }
 
-    public boolean isEmpty() {
-        return size == 0;
-    }
 
     private void expand() {
         resize(arr.length * FACTOR);
@@ -51,11 +48,11 @@ public class ArrayDeque<T> {
     }
 
 
-    public void addFirst(T value) {
+    public void addFirst(T item) {
         if (size == arr.length)
             expand();
         startIndex = (startIndex - 1 + arr.length) % arr.length;
-        arr[startIndex] = value;
+        arr[startIndex] = item;
         size++;
     }
 
@@ -70,6 +67,9 @@ public class ArrayDeque<T> {
 
 
     public T removeLast() {
+        if (isEmpty())
+            return null;
+
         if (size < MIN_CAPACITY_PERCENTAGE * arr.length)
             shrink();
 
@@ -81,12 +81,16 @@ public class ArrayDeque<T> {
     }
 
     public T removeFirst() {
+        if (isEmpty())
+            return null;
+
         if (size < MIN_CAPACITY_PERCENTAGE * arr.length)
             shrink();
 
         T removedValue = arr[startIndex];
         arr[startIndex] = null;
         startIndex++;
+        startIndex = startIndex % arr.length;
         size--;
         return removedValue;
     }
